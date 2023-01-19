@@ -10,7 +10,7 @@ const authentication = (req,res,next)=>{
         if(blacklistdata.includes(token)){
             return res.send("Please login again")
         }
-        jwt.verify(token, process.env.key, function(err, decoded) {
+        jwt.verify(token, process.env.seckey, function(err, decoded) {
             if(decoded){
 
                 req.body.user_id = decoded.user_id
