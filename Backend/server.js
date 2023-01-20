@@ -9,7 +9,9 @@ const fs = require("fs")
 const {connection} = require("./config/db")
 const {userModel} = require("./models/User.model")
 const {authentication} =require("./middleware/authentication")
-const {authorise} =require("./middleware/authorisation")
+const {authorise} =require("./middleware/authorisation");
+const { questionRouter } = require("./routes/question.route");
+const { answerRouter } = require("./routes/answer.route");
 
 
 const app = express();
@@ -23,7 +25,7 @@ app.get("/", (req, res) => {
 })
 
 app.post("/signup",async function(req,res){
-    const {email, password}=req.body
+    const {email, password,role}=req.body
     const user = await userModel.findOne({email})
     if(user?.email){
         res.send({msg:"user exists"})
@@ -32,7 +34,7 @@ app.post("/signup",async function(req,res){
             bcrypt.hash(password, 4, async function(err, hash) {
                 // Store hash in your password DB.
                 if(hash){
-                    const user = new userModel({email,password:hash})
+                    const user = new userModel({email,password:hash,role})
                     await user.save()
                     res.send({msg:"user added"})
                 }
@@ -76,6 +78,8 @@ app.get("/logout", (req, res) => {
     fs.writeFileSync("./blacklist.json", JSON.stringify(blacklistdata))
     return res.send("User logged out successfully")
 })
+app.use("/question",authentication,authorise(["writer"]),questionRouter)
+app.use("/answer",authentication,authorise(["writer"]),answerRouter)
 
 app.listen(8080, async () => {
     try{
