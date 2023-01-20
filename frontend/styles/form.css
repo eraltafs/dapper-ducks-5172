@@ -1,0 +1,11 @@
+#formdiv{
+    display: flex;
+    gap: 20px;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+form, input{
+    display: block;
+    margin: 10px 0px;
+}
