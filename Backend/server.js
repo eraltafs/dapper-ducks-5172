@@ -26,7 +26,7 @@ app.post("/signup",async function(req,res){
     const {email, password}=req.body
     const user = await userModel.findOne({email})
     if(user?.email){
-        res.send("user exists")
+        res.send({msg:"user exists"})
     }else{
         try{
             bcrypt.hash(password, 4, async function(err, hash) {
@@ -34,7 +34,7 @@ app.post("/signup",async function(req,res){
                 if(hash){
                     const user = new userModel({email,password:hash})
                     await user.save()
-                    res.send("user added")
+                    res.send({msg:"user added"})
                 }
             });
         }catch(err){
@@ -62,7 +62,7 @@ app.post("/login",async function(req,res){
                 res.cookie("token", token, {httpOnly : true})
                 res.send({msg:"logged in",token,refresToken})
             }else{
-                res.send("login again")
+                res.send({msg:"login again"})
             }
         });
     }else{
