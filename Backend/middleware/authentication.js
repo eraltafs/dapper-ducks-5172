@@ -23,7 +23,7 @@ const authentication = (req,res,next)=>{
             }
           });
     }else{
-        res.send("login")
+        res.send({msg:"login again"})
     }
 }
 module.exports = {authentication}

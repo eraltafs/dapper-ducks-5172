@@ -19,7 +19,7 @@ app.use(express.json())
 app.use(cors({
     origin : "*"
 }))
-
+app.use(cookieParser());
 app.get("/", (req, res) => {
     res.send("Welcome To API")
 })
@@ -68,7 +68,7 @@ app.post("/login",async function(req,res){
             }
         });
     }else{
-        res.send("login again")
+        res.send({msg:"login again"})
     }
 })
 app.get("/logout", (req, res) => {
