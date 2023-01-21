@@ -1,13 +1,10 @@
-let logo = document.getElementById("logo")
-logo.onclick = ()=>{
-  location.href = "/index.html"
-}
-
-let heading = document.querySelector("h1")
 let data = JSON.parse(localStorage.getItem("element"))||[]
-if(data?.querySelector){
-    heading.textContent = data?.question
-    fun()
+let heading = document.querySelector("h1")
+let logo = document.getElementById("logo")
+let answerdiv = document.getElementById("answerdiv")
+
+logo.onclick = ()=>{
+    location.href = "/index.html"
 }
 
 const fun = async () => {
@@ -20,6 +17,25 @@ const fun = async () => {
       },
     });
     let datajson = await res.json();
-    console.log(datajson)
-    // return datajson
+    if(datajson.length){
+    
+        append(datajson)
+    }else{
+        answerdiv.append("No answers till now")
+    }
+    
 };
+if(data?.question){
+    heading.textContent = data?.question
+    fun()
+}
+
+function append(datajson){
+    console.log(datajson)
+    datajson.forEach(el => {
+        let p = document.createElement("p")
+        p.textContent ="Ans:-"+el.answer
+        answerdiv.append(p)
+    });
+
+}

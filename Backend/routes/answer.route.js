@@ -8,8 +8,8 @@ answerRouter.get("/",async(req,res)=>{
     
     const {question_id} =  req.query
     const answer = await answerModel.find({question_id})
-    console.log(answer)
-    res.send("good")
+    
+    res.send(answer)
 })
 
 answerRouter.post("/create",async(req,res)=>{
