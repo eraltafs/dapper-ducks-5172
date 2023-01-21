@@ -39,6 +39,11 @@ loginform.addEventListener("submit", async (event) => {
     },
   });
   let datajson= await res.json()
-  console.log(datajson.token)
-  document.cookie =  "token" + "=" + datajson.token;
+ 
+  if(datajson?.token){
+    console.log(datajson.token)
+    document.cookie =  "token" + "=" + datajson.token;
+    alert("You are redirecting to home")
+    location.href = "/index.html"
+  }
 });

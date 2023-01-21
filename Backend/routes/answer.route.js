@@ -1,8 +1,16 @@
 const express = require("express")
 
 const {answerModel} = require("../models/answer.model")
+const {questionModel} = require("../models/question.model")
 const answerRouter =express.Router()
 
+answerRouter.get("/",async(req,res)=>{
+    
+    const {question_id} =  req.query
+    const answer = await answerModel.find({question_id})
+    
+    res.send(answer)
+})
 
 answerRouter.post("/create",async(req,res)=>{
     try{
