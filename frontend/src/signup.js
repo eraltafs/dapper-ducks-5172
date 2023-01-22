@@ -1,3 +1,9 @@
+let logo = document.getElementById("logo")
+logo.onclick = ()=>{
+  location.href = "/index.html"
+}
+
+
 let signupform = document.getElementById("signupform");
 signupform.addEventListener("submit", async (event) => {
   event.preventDefault();
