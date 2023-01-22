@@ -42,6 +42,7 @@ a:hover{
 button{
     cursor: pointer;
     padding: 4px 12px;
+    margin: 3px;
     border-radius: 10px;
     border: none;
 }
@@ -61,10 +62,19 @@ button:active{
     padding: 4px 12px;
     color: black;
 }
-
-.answeritem{
+.questionitem{
+    
     margin: 10px 0px;
     padding: 10px 10px;
     border-radius: 10px;
     box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+p{
+    cursor: pointer;
+    margin: 0px;
+    margin-bottom: 10px;
+    padding: 0px;
+}
+.questionitem input{
+    margin: 3px;
 }

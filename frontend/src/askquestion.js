@@ -1,10 +1,27 @@
-if(!document.cookie.split("=")[1]){
-    alert("You are redirecting to login or signup page you are not logged in")
-    location.href="/signup.html"
-}
-let logo = document.getElementById("logo")
-logo.onclick = ()=>{
-  location.href = "/index.html"
+let logo = document.getElementById("logo");
+logo.onclick = () => {
+  location.href = "/index.html";
+};
+
+if (document.cookie.split("=")[1]) {
+  document.getElementById("signup_button").style.display = "none";
+  document.getElementById("logout_button").onclick = async () => {
+    let res = await fetch(`http://localhost:8080/logout`, {
+      method: "GET",
+      headers: {
+        authentication: `Bearer ${document.cookie.split("=")[1]}`,
+        "content-type": "application/json",
+      },
+    });
+    let resjson = await res.json();
+    if(resjson.msg=="User logged out successfully"){
+      alert(resjson.msg)
+      document.cookie =  "token" + "=" + "";
+      location.reload()
+    }
+  };
+} else {
+  document.getElementById("profile_button").style.display = "none";
 }
 
 
@@ -32,5 +49,7 @@ form.addEventListener("submit", async (event) => {
     alert("your question posted")
     form.question.value =""
     form.tag.value=""
+ }else if(resdata.msg=="please login again"){
+  alert("please login or signup to post question")
  }
 });

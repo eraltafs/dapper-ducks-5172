@@ -8,7 +8,7 @@ const authentication = (req,res,next)=>{
     if(token){
         const blacklistdata = fs.readFileSync("./blacklist.json", "utf-8")
         if(blacklistdata.includes(token)){
-            return res.send("Please login again")
+            return res.send({msg:"please login again"})
         }
         jwt.verify(token, process.env.seckey, function(err, decoded) {
             if(decoded){
