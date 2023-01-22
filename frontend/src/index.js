@@ -26,6 +26,8 @@ body.onload =async()=>{
   let data = await fun()
   console.log(data);
   data.forEach(el => {
+    let questionitem =  document.createElement("div")
+    questionitem.setAttribute( "class", "questionitem" )
     let p = document.createElement("p")
     p.textContent = "Q. "+el.question
     p.onclick = ()=>{
@@ -45,6 +47,7 @@ body.onload =async()=>{
     
       tagsdiv.append(button)
     })
-    questionsdiv.append(p,tagsdiv)
+    questionitem.append(p,tagsdiv)
+    questionsdiv.append(questionitem)
   });
 }

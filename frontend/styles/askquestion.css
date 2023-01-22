@@ -61,3 +61,7 @@ button:active{
     padding: 4px 12px;
     color: black;
 }
+#questionform input{
+    display: block;
+    margin: 10px 0px;
+}
