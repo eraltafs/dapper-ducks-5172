@@ -6,7 +6,7 @@ logo.onclick = () => {
 if (document.cookie.split("=")[1]) {
   document.getElementById("signup_button").style.display = "none";
   document.getElementById("logout_button").onclick = async () => {
-    let res = await fetch(`http://localhost:8080/logout`, {
+    let res = await fetch(`https://top-hat-starfish.cyclic.app/logout`, {
       method: "GET",
       headers: {
         authentication: `Bearer ${document.cookie.split("=")[1]}`,
@@ -35,7 +35,7 @@ form.addEventListener("submit", async (event) => {
     question,
     tag,
   };
-  let res = await fetch(`http://localhost:8080/question/create`, {
+  let res = await fetch(`https://top-hat-starfish.cyclic.app/question/create`, {
     body: JSON.stringify(data),
     method: "POST",
     headers: {

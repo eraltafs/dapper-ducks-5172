@@ -6,7 +6,7 @@ logo.onclick = () => {
 if (document.cookie.split("=")[1]) {
   document.getElementById("signup_button").style.display = "none";
   document.getElementById("logout_button").onclick = async () => {
-    let res = await fetch(`http://localhost:8080/logout`, {
+    let res = await fetch(`https://top-hat-starfish.cyclic.app/logout`, {
       method: "GET",
       headers: {
         authentication: `Bearer ${document.cookie.split("=")[1]}`,
@@ -25,7 +25,7 @@ if (document.cookie.split("=")[1]) {
 }
 
 const fun = async () => {
-  let res = await fetch(`http://localhost:8080/`, {
+  let res = await fetch(`https://top-hat-starfish.cyclic.app/`, {
     // body: JSON.stringify(data),
     method: "GET",
     headers: {

@@ -16,7 +16,7 @@ signupform.addEventListener("submit", async (event) => {
     password,
     role
   };
-  let res = await fetch(`http://localhost:8080/signup`, {
+  let res = await fetch(`https://top-hat-starfish.cyclic.app/signup`, {
     body: JSON.stringify(data),
     method: "POST",
     headers: {
@@ -37,7 +37,7 @@ loginform.addEventListener("submit", async (event) => {
     email,
     password,
   };
-  let res = await fetch(`http://localhost:8080/login`, {
+  let res = await fetch(`https://top-hat-starfish.cyclic.app/login`, {
     body: JSON.stringify(data),
     method: "POST",
     headers: {

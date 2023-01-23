@@ -6,7 +6,7 @@ logo.onclick = () => {
 if (document.cookie.split("=")[1]) {
   document.getElementById("signup_button").style.display = "none";
   document.getElementById("logout_button").onclick = async () => {
-    let res = await fetch(`http://localhost:8080/logout`, {
+    let res = await fetch(`https://top-hat-starfish.cyclic.app/logout`, {
       method: "GET",
       headers: {
         authentication: `Bearer ${document.cookie.split("=")[1]}`,
@@ -37,7 +37,7 @@ form.addEventListener("submit",async(event)=>{
     }
     if(!answer==""){
 
-        let res = await fetch(`http://localhost:8080/answer/create`, {
+        let res = await fetch(`https://top-hat-starfish.cyclic.app/answer/create`, {
           method: "POST",
           body:JSON.stringify(senddata),
           headers: {
@@ -63,7 +63,7 @@ form.addEventListener("submit",async(event)=>{
 })
 
 const fun = async () => {
-    let res = await fetch(`http://localhost:8080/ans?question_id=${data._id}`, {
+    let res = await fetch(`https://top-hat-starfish.cyclic.app/ans?question_id=${data._id}`, {
       // body: JSON.stringify(data),
       method: "GET",
       headers: {
@@ -110,7 +110,7 @@ function append(datajson){
                 datasend = {
                     answer
                 }
-                let res = await fetch(`http://localhost:8080/answer/update/${el._id}`,{
+                let res = await fetch(`https://top-hat-starfish.cyclic.app/answer/update/${el._id}`,{
                     body:JSON.stringify(datasend),
                     method: "PATCH",
                     headers: {
@@ -133,7 +133,7 @@ function append(datajson){
         deletebutton.innerHTML = `<i class="fa-regular fa-trash-can"></i> Delete`
         deletebutton.onclick = async()=>{
            
-            let res = await fetch(`http://localhost:8080/answer/delete/${el._id}`,{
+            let res = await fetch(`https://top-hat-starfish.cyclic.app/answer/delete/${el._id}`,{
                 method: "DELETE",
                 headers: {
                   authentication: `Bearer ${document.cookie.split("=")[1]}`,

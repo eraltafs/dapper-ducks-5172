@@ -6,7 +6,7 @@ logo.onclick = () => {
 if (document.cookie.split("=")[1]) {
   document.getElementById("signup_button").style.display = "none";
   document.getElementById("logout_button").onclick = async () => {
-    let res = await fetch(`http://localhost:8080/logout`, {
+    let res = await fetch(`https://top-hat-starfish.cyclic.app/logout`, {
       method: "GET",
       headers: {
         authentication: `Bearer ${document.cookie.split("=")[1]}`,
@@ -26,7 +26,7 @@ if (document.cookie.split("=")[1]) {
 }
 let body = document.querySelector("body")
 body.onload = async()=>{
-  let res = await fetch("http://localhost:8080/profile",{
+  let res = await fetch("https://top-hat-starfish.cyclic.app/profile",{
     method:"GET",
     headers:{
       authentication: `Bearer ${document.cookie.split("=")[1]}`,
@@ -80,7 +80,7 @@ body.onload = async()=>{
                 tag
             }
             }
-            let res = await fetch(`http://localhost:8080/question/update/${el._id}`,{
+            let res = await fetch(`https://top-hat-starfish.cyclic.app/question/update/${el._id}`,{
                 body:JSON.stringify(datasend),
                 method: "PATCH",
                 headers: {
@@ -101,7 +101,7 @@ body.onload = async()=>{
     deletebutton.innerHTML = `<i class="fa-regular fa-trash-can"></i> Delete`
     deletebutton.onclick = async()=>{
        
-        let res = await fetch(`http://localhost:8080/question/delete/${el._id}`,{
+        let res = await fetch(`https://top-hat-starfish.cyclic.app/question/delete/${el._id}`,{
             method: "DELETE",
             headers: {
               authentication: `Bearer ${document.cookie.split("=")[1]}`,
